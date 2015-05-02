@@ -30,4 +30,12 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
+
+	public function formatDatetimeMysql($datetime){
+		return date('Y-m-d H:i:s', strtotime($datetime));
+	}
+
+	public function formateDatetimeView($datetime){
+		return date('m/d/Y h:i a', strtotime($datetime));
+	}
 }

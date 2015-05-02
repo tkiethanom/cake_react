@@ -4,12 +4,11 @@ App::uses('AdminController', 'Controller');
 class UsersController extends AdminController{
 	public $controller = 'Users';
 	public $model = 'User';
-	public $users = array('User');
+	public $uses = array('User');
 
 	function beforeFilter(){
 		parent::beforeFilter();
 
-		$this->Auth->allow();
 		$this->set('model',$this->model);
 	}
 

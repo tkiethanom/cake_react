@@ -29,18 +29,22 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	echo $this->Html->meta('icon');
 
 	echo $this->Html->script('lib/jquery/jquery-1.11.2.min');
+	echo $this->Html->script('lib/jquery-ui-1.11.4/jquery-ui.min');
+	echo $this->Html->script('lib/jquery-ui-timepicker/jquery-ui-timepicker');
 	echo $this->Html->script('lib/bootstrap-3.3.4-dist/js/bootstrap.min');
 	echo $this->Html->script('lib/react-0.13.1/build/react');
 	echo $this->Html->script('lib/react-0.13.1/build/JSXTransformer');
 	echo $this->Html->script('lib/react-router/ReactRouter.min');
-
+	echo $this->Html->script('app/admin/admin');
 	?>
 	<script type="text/jsx" src="/js/app/blogPosts.js"></script>
 	<script type="text/jsx" src="/js/app/app.js"></script>
 
+	<link rel="stylesheet" type="text/css" href="/js/lib/jquery-ui-1.11.4/jquery-ui.min.css" >
+	<link rel="stylesheet" type="text/css" href="/js/lib/jquery-ui-timepicker/jquery-ui-timepicker.css" >
 	<link rel="stylesheet" type="text/css" href="/js/lib/bootstrap-3.3.4-dist/css/bootstrap.min.css" >
 	<?php
-	echo $this->Html->css('app/app');
+	echo $this->Html->css('app/admin/admin');
 
 	echo $this->fetch('meta');
 	echo $this->fetch('css');
