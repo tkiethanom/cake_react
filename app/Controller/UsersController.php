@@ -10,6 +10,8 @@ class UsersController extends AdminController{
 		parent::beforeFilter();
 
 		$this->set('model',$this->model);
+
+		$this->Auth->allow();
 	}
 
 	function admin_index(){

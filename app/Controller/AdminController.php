@@ -2,6 +2,7 @@
 class AdminController extends AppController{
 	public $controller = 'Admin';
 	public $model = 'Admin';
+	public $layout = 'admin';
 
 	function beforeFilter(){
 		parent::beforeFilter();
@@ -10,9 +11,6 @@ class AdminController extends AppController{
 	}
 
 	function admin_index(){
-		$this->layout = 'admin';
-
-
 		$this->Paginator->settings = array(
 			'limit'=>25,
 			'order'=>array($this->model.'.id'=>'ASC')
@@ -26,7 +24,6 @@ class AdminController extends AppController{
 	}
 
 	function admin_add(){
-		$this->layout = 'admin';
 		$this->set('title_for_layout',Inflector::humanize($this->controller).' Add');
 
 		if (!empty($this->data)) {
@@ -43,7 +40,6 @@ class AdminController extends AppController{
 	}
 
 	function admin_edit($id){
-		$this->layout = 'admin';
 		$this->set('title_for_layout',Inflector::humanize($this->controller).' Edit');
 
 		if(!empty($id)){
@@ -145,7 +141,6 @@ class AdminController extends AppController{
 	}
 
 	function index(){
-		$this->layout = 'admin';
 		$this->set('title_for_layout','Admin');
 	}
 
