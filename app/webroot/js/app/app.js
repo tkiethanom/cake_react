@@ -27,7 +27,7 @@ var Navigation = React.createClass({
             <header>
                 <nav className="navbar navbar-default">
                     <ul className="nav navbar-nav">
-                        <li className="active"><Link to="app">Home</Link></li>
+                        <li ><Link to="app">Home</Link></li>
                         <li ><Link to="blog">Blog</Link></li>
                     </ul>
                 </nav>
@@ -42,7 +42,6 @@ var Home = React.createClass({
         return (
             <div>
                 <div>Home</div>
-                <BlogPosts data={this.props.data} />
             </div>
         );
     }
@@ -50,11 +49,9 @@ var Home = React.createClass({
 
 var routes = (
     <Route name="app" path="/" handler={App}>
-        <Route name="blog" path="/blog" handler={BlogPosts}>
-
-        </Route>
+	    <DefaultRoute handler={Home}/>
+	    <Route name="blog" path="/blog" handler={BlogPosts} />
         <Route name="blogView" path="/blog/:blogId" handler={BlogView} />
-        <DefaultRoute handler={Home}/>
     </Route>
 );
 
@@ -62,3 +59,28 @@ Router.run(routes, Router.HistoryLocation, function (Root) {
     //React.render(<Handler data={data}/>, );
     React.render(<Root data={data} />, $('#content-container')[0]);
 });
+
+$(document).ready(function(){
+	$(document).on('click','a',function(){
+		data = null;
+	});
+
+	toggleHeaderActive();
+	$(document).on('click','header .nav a',function(){
+		$('header .nav li.active').removeClass('active');
+		$(this).parent('li').addClass('active');
+	});
+
+});
+
+
+function toggleHeaderActive(){
+	var url = window.location.pathname;
+	$('header .nav li.active').removeClass('active');
+
+	$('header .nav a').each(function(){
+		if(url == $(this).attr('href')){
+			$(this).parent('li').addClass('active');
+		}
+	});
+}

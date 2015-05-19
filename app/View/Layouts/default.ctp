@@ -47,21 +47,18 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('script');
 	?>
 	<script type="text/javascript">
-		var data = {
-			'Posts': [
-				{id: 1, title: "Pete Hunt", content: "This is one comment", date: "01/05/2015"},
-				{id: 2, title: "Jordan Walke", content: "This is *another* comment", date: "02/02/02"}
-			]
-		};
+		var data;
+		<?php if(isset($data)): ?>
+			var data = <?php echo $data; ?>
+		<?php endif; ?>
 	</script>
 </head>
 <body>
 	<div class="container-fluid" id="content-container">
 
 	</div>
-
 	<?php echo $this->Session->flash(); ?>
 
-	<?php echo $this->element('sql_dump'); ?>
+	<?php //secho $this->element('sql_dump'); ?>
 </body>
 </html>
